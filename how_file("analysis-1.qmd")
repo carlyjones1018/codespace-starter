@@ -1,0 +1,203 @@
+[33mcommit 17cff2164f4f07bd36b78479e8323d121c1c7ff4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: a47d388 0587bdd
+Author: David Kane <dave.kane@gmail.com>
+Date:   Mon Oct 26 02:09:14 2026 -0400
+
+    Merge pull request #81 from PPBDS/repin-1.3.4
+    
+    Repin to 1.3.4: vscode-R back to 3.2.0, baked extensions pinned
+
+[33mcommit 0587bddecfad9abb3109805bfe8ff8778a80863c[m
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sun Oct 25 22:52:02 2026 -0400
+
+    Repin to 1.3.4: vscode-R back to 3.2.0, baked extensions pinned
+    
+    Image 1.3.3 -> 1.3.4 and reditorsupport.r@3.2.1 -> 3.2.0 in lockstep.
+    vscode-R 3.2.1 has broken plot and help viewers ("Plot refresh failed:
+    TypeError: (void 0) is not a function", an ejs bump upstream, reported);
+    the image rolls back to 3.2.0 and now marks every baked extension pinned
+    in the extensions directory's metadata, so VS Code no longer auto-updates
+    it after attach. The comment records why the @version pin alone was not
+    enough.
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+[33mcommit a47d388e6e391d30dfce2430ac11e612d68ab45a[m
+Merge: 1cdba5d d1ee704
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sun Oct 25 20:34:59 2026 -0400
+
+    Merge pull request #80 from PPBDS/repin-1.3.3
+    
+    Repin to 1.3.3: vscode-R 3.2.1 (stops the sess-mismatch prompt)
+
+[33mcommit d1ee70467f5a322355551e58c5bd4ee17ba5a317[m[33m ([m[1;31morigin/repin-1.3.3[m[33m)[m
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sun Oct 25 18:55:34 2026 -0400
+
+    Repin to 1.3.3: vscode-R 3.2.1 (stops the sess-mismatch prompt)
+    
+    Image 1.3.2 -> 1.3.3 and, in lockstep, reditorsupport.r@3.2.0 -> 3.2.1.
+    vscode-R 3.2.1 (stable, 2026-10-24) auto-updated over the baked 3.2.0 in
+    fresh Codespaces and then rejected the baked sess, prompting "The installed
+    sess does not match this build of vscode-R" at every R start. The 1.3.3
+    image bakes 3.2.1 with its own sess, so they match again. A comment records
+    that the @version pin does not prevent later auto-updates.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+[33mcommit 1cdba5d7029690b48ba5eb1c2cc42111694a5a1e[m
+Merge: c60a3f1 0e44b6a
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sun Oct 25 10:47:38 2026 -0400
+
+    Merge pull request #79 from PPBDS/repin-1.3.2
+    
+    Repin to 1.3.2: vscode.tutorials refreshed
+
+[33mcommit 0e44b6a367d0d3fdd90b56d5b5633506d2d3369e[m
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sun Oct 25 10:43:40 2026 -0400
+
+    Repin to 1.3.2: vscode.tutorials refreshed
+    
+    Course packages refreshed from GitHub HEAD on 2026-10-25 (vscode.tutorials
+    0.2.1.9001). Nothing else changed in the image.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+[33mcommit c60a3f18a8c75986c31392ce59a3ea7ccdbe6d86[m
+Merge: b5239de 991bf4b
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sat Oct 24 15:34:08 2026 -0400
+
+    Merge pull request #78 from PPBDS/live-server-opener
+    
+    Live Server: name the image's xdg-open as its browser command (students got no tab)
+
+[33mcommit 991bf4bedcd6ef23e03326dc3fb0ea41509185a4[m
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sat Oct 24 15:29:46 2026 -0400
+
+    Live Server: name the image's xdg-open as its browser command (students got no tab)
+    
+    The 1.3.1 rollout silenced the port-5500 pop-up on the strength of the
+    image's xdg-open opening the clicked file — but Live Server's DEFAULT
+    launch (the opn package resolving xdg-open from the extension host) never
+    reached it, so a fresh 1.3.1 Codespace opened nothing at all. Pointing
+    liveServer.settings.AdvanceCustomBrowserCmdLine at /usr/local/bin/xdg-open
+    makes Live Server spawn the stub directly with the URL; verified in a live
+    Codespace: the clicked file opens on every click. Launcher test guards it.
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+[33mcommit b5239ded6437649b70153e7143d4835a689e9f04[m
+Merge: d74c856 8bb333a
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sat Oct 24 14:15:30 2026 -0400
+
+    Merge pull request #77 from PPBDS/repin-1.3.1
+    
+    Repin to 1.3.1: Live Server opens the clicked file; silence its ports and info box
+
+[33mcommit 8bb333a64fc2a08fa86f61a3a7a29a4707b038d7[m
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sat Oct 24 10:51:27 2026 -0400
+
+    Repin to 1.3.1: Live Server opens the clicked file; silence its ports and info box
+    
+    Image 1.3.0 -> 1.3.1: the image's xdg-open now builds the Codespaces
+    forwarded address itself, so "Open with Live Server" opens the clicked
+    file in a new tab on every click (issue #74; proven live 2026-10-24).
+    
+    With that, the "port 5500 is available" pop-up only produces a second,
+    wrong tab (its button opens the port root), so ports 5500-5510 are
+    silenced like 7446 — forwarding stays on, the tab is served through it.
+    Live Server's own "Server is Started" info box is turned off too. The
+    launcher tests guard both.
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+[33mcommit d74c856ae43763075c20cafcd4b276f082670b40[m
+Merge: 3cc1a45 5049515
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sat Oct 24 09:21:10 2026 -0400
+
+    Merge pull request #76 from PPBDS/repin-1.3.0
+    
+    Repin to 1.3.0: Live Server opens the clicked file; course packages refreshed
+
+[33mcommit 5049515968da01ff1b732c882e4b7afa4d27e56e[m
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sat Oct 24 09:11:41 2026 -0400
+
+    Repin to 1.3.0: Live Server opens the clicked file; course packages refreshed
+    
+    Image 1.2.9 -> 1.3.0. The image's xdg-open now forwards URLs to the VS
+    Code client, so "Open with Live Server" opens the file that was clicked
+    instead of a directory listing (issue #74). Course packages refreshed from
+    GitHub HEAD on 2026-10-24: misc.tutorials 0.3.1, vscode.tutorials 0.2.1.
+    vscode-R stays 3.2.0, so the extension pin is unchanged.
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+[33mcommit 3cc1a457c9ddfdbe7c2aa3285bb3d6faa08b799c[m
+Merge: f744b98 663456b
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sat Oct 17 09:36:56 2026 -0400
+
+    Merge pull request #73 from PPBDS/repin-1.2.9
+    
+    Repin to 1.2.9: learnr2 + tutorials refreshed; vscode-R 3.2.0
+
+[33mcommit 663456b15f5e22aa1f45f46f0a32737a194e73d7[m
+Author: David Kane <dave.kane@gmail.com>
+Date:   Sat Oct 17 09:24:15 2026 -0400
+
+    Repin to 1.2.9: learnr2 + tutorials refreshed; vscode-R 3.2.0
+    
+    Image 1.2.8 -> 1.2.9 and, in lockstep, the vscode-R extension pin
+    3.0.1 -> 3.2.0 (the image bakes 3.2.0 and its sess). Course packages
+    refreshed from GitHub HEAD on 2026-10-17: learnr2 0.1.3.9006,
+    vscode.tutorials 0.2.0.9001, misc.tutorials 0.3.0.9000.
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+[33mcommit f744b989fd9d658b01af72bb7234434212c4ea8b[m
+Merge: e6d0354 687bec7
+Author: David Kane <dave.kane@gmail.com>
+Date:   Tue Oct 13 07:55:08 2026 -0400
+
+    Merge pull request #72 from PPBDS/repin-1.2.8
+    
+    Repin to 1.2.8: misc.tutorials 0.3.0, vscode.tutorials fixes
+
+[33mcommit 687bec775c03e487ce79f64bafff601723a5dcbd[m
+Author: David Kane <dave.kane@gmail.com>
+Date:   Tue Oct 13 07:46:56 2026 -0400
+
+    Repin to 1.2.8: misc.tutorials 0.3.0, vscode.tutorials fixes
+    
+    Course packages refreshed from GitHub HEAD on 2026-10-13 (misc.tutorials
+    0.3.0; vscode.tutorials orientation fixes); grok 1.0.52. Still no learnr;
+    vscode-R stays 3.0.1.
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+[33mcommit e6d0354b50d872535a4c7096abd59c593c225da0[m
+Merge: cf3e742 e39cff3
+Author: David Kane <dave.kane@gmail.com>
+Date:   Mon Oct 12 12:34:16 2026 -0400
+
+    Merge pull request #71 from PPBDS/repin-1.2.7
+    
+    Repin to 1.2.7: tool bumps, course packages refreshed
+
+[33mcommit e39cff3a8c0344a3cf884ca50137bd3e88b43d5d[m
+Author: David Kane <dave.kane@gmail.com>
+Date:   Mon Oct 12 12:29:59 2026 -0400
+
+    Repin to 1.2.7: tool bumps, course packages refreshed
+    
+    Quarto 1.10.19, arf 0.6.0, Claud
